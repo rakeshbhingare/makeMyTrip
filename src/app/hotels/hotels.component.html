@@ -1,0 +1,45 @@
+<div class="container border rounded mt-3 shadow-sm">
+  <div class="mt-4 p-2">
+    <h4>Search Hotels</h4>
+    <p class="fs-bold">Enjoy hassle free booking with ClearTrip</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <label for="">City</label>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="id1" name="selCity" [(ngModel)]="city"/>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="">Select Date</label>
+      <div class="mb-3 form-group">
+        <input
+          type="text"
+          placeholder="Daterangepicker"
+          class="form-control"
+          bsDaterangepicker
+          name="selDate"
+          [(ngModel)]="selDate"
+          (ngModelChange)="dataChange()"
+        />
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="">Rooms</label>
+      <div class="dropdown">
+        <button class="btn dd dropdown-toggle w-100 border" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
+          1 Rooms 2 Adult
+        </button>
+        <ul class="dropdown-menu w-100 " aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" (click)="searchRooms(opt)" *ngFor="let opt of roomsOptArr">{{opt}}</a></li>
+          <!-- <li><a class="dropdown-item"> 3 Rooms 6 Adult</a></li>
+          <li><a class="dropdown-item"> 2 Rooms 2 Children</a></li> -->
+        </ul>
+      </div>
+    </div>
+    <div class="button text-center">
+      <button class="btn btn-primary" routerLink="/hotels/search-hotels" [queryParams]="{city:city,checkIn:checkInDate,checkout:checkOutDate,rooms:selRooms}">Search Hotel</button>
+    </div>
+  </div>
+</div>
